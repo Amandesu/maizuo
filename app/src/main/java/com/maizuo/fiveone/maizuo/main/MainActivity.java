@@ -20,6 +20,7 @@ import com.maizuo.fiveone.maizuo.main.Fragment.cinema.Cinema;
 import com.maizuo.fiveone.maizuo.main.Fragment.movie.ListAdaper;
 import com.maizuo.fiveone.maizuo.main.Fragment.movie.Movie;
 import com.maizuo.fiveone.maizuo.main.Fragment.movie.RequestMovie;
+import com.maizuo.fiveone.maizuo.main.Fragment.user.User;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private ViewGroup footerTab;
     private Fragment movie = new Movie();
     private Fragment cinema = new Cinema();
+    private Fragment user = new User();
     private FragmentManager mFragmentManager = getSupportFragmentManager();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +45,10 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction mTransaction = mFragmentManager.beginTransaction();
         mTransaction.add(R.id.main_layout, movie);
         mTransaction.add(R.id.main_layout, cinema);
+        mTransaction.add(R.id.main_layout, user);
         mTransaction.hide(movie);
         mTransaction.hide(cinema);
+        mTransaction.hide(user);
         mTransaction.commit();
         initFooterTab();
 
@@ -53,10 +57,15 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction mTransaction = mFragmentManager.beginTransaction();
         mTransaction.hide(movie);
         mTransaction.hide(cinema);
+        mTransaction.hide(user);
         if (index == 0) {
             mTransaction.show(movie);
         } else if (index == 1) {
             mTransaction.show(cinema);
+        } else if (index == 2) {
+
+        } else if (index == 3) {
+            mTransaction.show(user);
         }
         mTransaction.commit();
     }

@@ -14,7 +14,7 @@
         <ImageView
             android:layout_width="21dp"
             android:layout_height="21dp"
-            android:src="@drawable/movie"
+            android:src="@drawable/main_footer_movie"
             />
         <TextView
             android:layout_width="match_parent"
@@ -36,7 +36,7 @@
         <ImageView
             android:layout_width="21dp"
             android:layout_height="21dp"
-            android:src="@drawable/cinema"
+            android:src="@drawable/main_footer_cinema"
             android:id="@+id/footer_main_cinema_icon"
             />
 
@@ -59,7 +59,7 @@
         <ImageView
             android:layout_width="21dp"
             android:layout_height="21dp"
-            android:src="@drawable/offer"
+            android:src="@drawable/main_footer_offer"
             />
 
         <TextView
@@ -81,7 +81,7 @@
         <ImageView
             android:layout_width="21dp"
             android:layout_height="21dp"
-            android:src="@drawable/user"
+            android:src="@drawable/main_footer_user"
             />
 
         <TextView
