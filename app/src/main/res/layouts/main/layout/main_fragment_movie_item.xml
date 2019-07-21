@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="109dp"
+    android:orientation="horizontal"
+    android:paddingTop="15dp"
+    android:paddingBottom="15dp">
+    <ImageView
+        android:id="@+id/poster"
+        android:layout_width="66dp"
+        android:layout_height="94dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/name"
+                android:layout_height="22dp"
+                android:layout_width="wrap_content"
+                android:textSize="16dp"
+                android:textColor="#191a1b"
+                android:text="黑衣人：全球通缉"
+                >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textSize="13dp"
+                android:textColor="#797d82"
+                android:text="观众评分"
+                >
+            </TextView>
+            <TextView
+                android:id="@+id/grade"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textSize="14dp"
+                android:textColor="#ffb232"
+                android:text="7"
+                >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textSize="13dp"
+                android:textColor="#797d82"
+                android:text="主演"
+                >
+            </TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/nation"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textSize="13dp"
+                android:textColor="#797d82"
+                android:text="美国"
+                >
+            </TextView>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+
