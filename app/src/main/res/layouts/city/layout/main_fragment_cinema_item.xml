@@ -1,0 +1,48 @@
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="15dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/name"
+            android:textSize="15dp"
+            android:textColor="#191a1b"
+            android:text="深圳中影UL城市影院坪地店"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/address"
+            android:textSize="12dp"
+            android:layout_marginTop="5dp"
+            android:textColor="#797d82"
+            android:text="深圳市龙岗区坪地浩天购物广场四楼"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/lowprice"
+            android:textSize="15dp"
+            android:textColor="#ff5f16"
+            android:text="￥35起"
+            android:layout_gravity="right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textSize="12dp"
+            android:layout_marginTop="5dp"
+            android:textColor="#797d82"
+            android:text="12916.4km"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

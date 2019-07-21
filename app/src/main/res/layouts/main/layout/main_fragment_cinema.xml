@@ -1,9 +1,87 @@
-<LinearLayout android:layout_height="match_parent"
+<LinearLayout
+    android:layout_height="wrap_content"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView
-        android:gravity="center"
-        android:text="电影院"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp" />
+        android:layout_height="44dp"
+
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1.5">
+            <TextView
+                android:layout_width="10dp"
+                android:layout_height="match_parent" />
+            <TextView
+                android:layout_marginRight="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="深圳" />
+            <ImageView
+                android:layout_width="6dp"
+                android:layout_height="8dp"
+                android:src="@drawable/main_fragment_cinema_downarrow" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="7"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="影院"
+                android:textColor="#191a1b"
+                android:textSize="17dp" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_weight="1.5"
+            android:baselineAligned="false"
+            android:src="@drawable/main_fragment_cinema_search" />
+    </LinearLayout>
+    <TextView
+            android:background="#ededed"
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollview"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+                <com.maizuo.fiveone.maizuo.customview.ListViewForScrollView
+                    android:id="@+id/list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                </com.maizuo.fiveone.maizuo.customview.ListViewForScrollView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
