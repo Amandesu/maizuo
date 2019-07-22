@@ -56,6 +56,83 @@
             android:background="#ededed"
             android:layout_width="match_parent"
             android:layout_height="1dp" />
+
+
+
+    <RelativeLayout
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/select"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="49dp">
+            <FrameLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    android:layout_width="wrap_content"
+                    android:textSize="14dp"
+                    android:text="全城"
+                    android:textColor="#191a1b"
+                    android:layout_height="wrap_content" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:textSize="14dp"
+                    android:text="APP订票"
+                    android:textColor="#191a1b"
+                    android:layout_height="wrap_content" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:textSize="14dp"
+                    android:text="最近去过"
+                    android:textColor="#191a1b"
+                    android:layout_height="wrap_content" />
+            </FrameLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/options"
+            android:layout_below="@+id/select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="10dp"
+                android:text="福田区"
+                android:textColor="#797d82"
+                android:textSize="12dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/mask"
+            android:background="#000"
+            android:alpha="0.4"
+            android:layout_below="@+id/options"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+        </LinearLayout>
+    </RelativeLayout>
+
     <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_alignParentStart="true"
@@ -84,4 +161,5 @@
 
         </LinearLayout>
     </ScrollView>
+
 </LinearLayout>

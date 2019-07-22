@@ -39,7 +39,7 @@ public class Cinema extends Fragment {
     }
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
+        // 获取电影院数据
         adaper = new ListAdaper(allList, getContext());
         listView = (ListView)view.findViewById(R.id.list);
         listView.setAdapter(adaper);
