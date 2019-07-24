@@ -1,0 +1,21 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:paddingBottom="15dp"
+    >
+    <TextView
+        android:id="@+id/text"
+        android:background="@drawable/common_border"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="10dp"
+        android:text="福田区"
+        android:textColor="#797d82"
+        android:textSize="12dp" />
+
+
+</LinearLayout>
+
