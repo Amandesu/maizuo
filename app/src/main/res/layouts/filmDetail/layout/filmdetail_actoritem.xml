@@ -1,0 +1,31 @@
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_marginRight="10dp"
+    android:layout_width="85dp"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <ImageView
+        android:id="@+id/actors_poster"
+        android:layout_width="85dp"
+        android:layout_height="85dp" />
+
+    <TextView
+        android:id="@+id/actors_name"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="陈国辉"
+        android:textSize="12dp"
+        android:textColor="#191a1b"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp" />
+
+    <TextView
+        android:id="@+id/actors_role"
+        android:layout_gravity="center"
+        android:text="导演"
+        android:textSize="10dp"
+        android:textColor="#797d82"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>
