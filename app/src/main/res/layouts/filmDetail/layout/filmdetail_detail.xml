@@ -1,0 +1,68 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:orientation="vertical"
+    android:paddingHorizontal="15dp"
+    android:paddingVertical="12dp">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="#191a1b"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text=""
+        android:textColor="#797d82"
+        android:textSize="13dp" />
+
+    <TextView
+        android:id="@+id/premiereAt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text=""
+        android:textColor="#797d82"
+        android:textSize="13dp" />
+
+    <TextView
+        android:id="@+id/nation_runtime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text=""
+        android:textColor="#797d82"
+        android:textSize="13dp" />
+
+    <TextView
+        android:id="@+id/film_synopsis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:height="32dp"
+        android:text=""
+        android:textColor="#797d82"
+        android:textSize="13dp" />
+
+    <FrameLayout
+        android:id="@+id/toggle"
+        android:layout_width="match_parent"
+        android:layout_height="16dp">
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:src="@drawable/filmdetail_downarrow" />
+    </FrameLayout>
+
+
+</LinearLayout>

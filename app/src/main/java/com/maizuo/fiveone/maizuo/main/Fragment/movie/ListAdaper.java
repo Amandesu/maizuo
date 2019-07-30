@@ -26,6 +26,7 @@ public class ListAdaper extends BaseAdapter {
     private List<Map<String, Object>> Datas;
     private Drawable drawable;
     private Context mContext;
+    private OnItemClickListener mOnItemClickListener;
 
     public ListAdaper(List<Map<String, Object>> datas, Context mContext) {
         Datas = datas;
@@ -50,7 +51,6 @@ public class ListAdaper extends BaseAdapter {
     public Object getItem(int i) {
         return Datas.get(i);
     }
-
     /**
      * 返回每一个item的id
      * @param i
@@ -65,6 +65,12 @@ public class ListAdaper extends BaseAdapter {
         public TextView grade;
         public TextView name;
         public TextView nation;
+    }
+    public static interface OnItemClickListener {
+        void onItemClick(String filmId);
+    }
+    public void setOnItemClickListener(OnItemClickListener listener){
+        mOnItemClickListener = listener;
     }
     @Override
     public View getView(int i, View convertView, ViewGroup viewGroup) {
@@ -95,7 +101,12 @@ public class ListAdaper extends BaseAdapter {
             view = convertView;
             holder = (ViewHolder)view.getTag();
         }
-
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mOnItemClickListener.onItemClick(item.get("filmId"));
+            }
+        });
         holder.name.setText(item.get("name"));
         holder.nation.setText(item.get("nation"));
         holder.grade.setText(item.get("grade"));

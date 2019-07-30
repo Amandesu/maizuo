@@ -20,27 +20,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ActorAdaper extends RecyclerView.Adapter<ActorAdaper.ViewHolder>  {
-    private List<FilmDetail.Actor> Datas;
+public class PhotoAdaper extends RecyclerView.Adapter<PhotoAdaper.ViewHolder>  {
+    private List<String> Datas;
     private Context mContext;
     private OnItemClickListener mOnItemClickListener;
 
-    public ActorAdaper(List<FilmDetail.Actor> datas, Context mContext) {
+    public PhotoAdaper(List<String> datas, Context mContext) {
         Datas = datas;
         this.mContext = mContext;
     }
     class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView actors_poster;
-        public TextView actors_name;
-        public TextView actors_role;
         public View view;
 
         public ViewHolder(View view) {
             super(view);
             this.view = view;
             this.actors_poster = view.findViewById(R.id.actors_poster);
-            this.actors_name = view.findViewById(R.id.actors_name);
-            this.actors_role = view.findViewById(R.id.actors_role);
         }
     }
     public static interface OnItemClickListener {
@@ -50,41 +46,21 @@ public class ActorAdaper extends RecyclerView.Adapter<ActorAdaper.ViewHolder>  {
         this.mOnItemClickListener = listener;
     }
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
         View view;
-        view = (View) LayoutInflater.from(mContext).inflate(R.layout.filmdetail_actoritem, parent, false);
-
-       /* view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mOnItemClickListener.onItemClick(v);
-            }
-        });*/
+        view = (View) LayoutInflater.from(mContext).inflate(R.layout.filmdetail_photoitem, parent, false);
         return new ViewHolder(view);
     }
-
     @Override
     public int getItemCount() {
         return Datas.size();
     }
 
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        if (position == 0) {
-            /*RecyclerView.LayoutParams m = (RecyclerView.LayoutParams)holder.view.getLayoutParams();
-            m.leftMargin = 15;
-            holder.view.setLayoutParams(m);*/
-
-        }
-        final FilmDetail.Actor item = (FilmDetail.Actor)Datas.get(position);
-
-
-        holder.actors_name.setText(item.name);
-        holder.actors_role.setText(item.role);
-
+        final String item = (String)Datas.get(position);
         new Thread(new Runnable(){
             @Override
             public void run() {
-                final Drawable drawable = loadImageFromNetwork(item.avatarAddress);
+                final Drawable drawable = loadImageFromNetwork(item);
                 holder.actors_poster.post(new Runnable(){
                     @Override
                     public void run() {

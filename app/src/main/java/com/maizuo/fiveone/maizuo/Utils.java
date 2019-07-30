@@ -1,5 +1,9 @@
 package com.maizuo.fiveone.maizuo;
 
+import android.graphics.drawable.Drawable;
+
+import java.io.IOException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,5 +35,20 @@ public class Utils {
     }
     public static City getCityInfo(){
         return city;
+    }
+
+
+    public static Drawable loadImageFromNetwork(String imageUrl)
+    {
+        Drawable drawable = null;
+        try {
+            // 可以在这里通过文件名来判断，是否本地有此图片
+            drawable = Drawable.createFromStream(
+                    new URL(imageUrl).openStream(), "image.jpg");
+        } catch (IOException e) {
+
+        }
+
+        return drawable ;
     }
 }

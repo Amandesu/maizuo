@@ -1,6 +1,7 @@
 package com.maizuo.fiveone.maizuo.main.Fragment.movie;
 
 
+import android.content.Intent;
 import android.support.v4.app.Fragment ;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,6 +14,8 @@ import android.widget.ListView;
 import android.widget.ScrollView;
 
 import com.maizuo.fiveone.maizuo.R;
+import com.maizuo.fiveone.maizuo.filmDetail.FilmDetail;
+import com.maizuo.fiveone.maizuo.main.MainActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -59,6 +62,15 @@ public class Movie extends Fragment {
         adaper = new ListAdaper(allList, getContext());
         listView = (ListView)view.findViewById(R.id.list);
         listView.setAdapter(adaper);
+        adaper.setOnItemClickListener(new ListAdaper.OnItemClickListener(){
+            @Override
+            public void onItemClick(String filmId) {
+
+                Intent intent = new Intent(getActivity(), FilmDetail.class);
+                intent.putExtra("filmId", filmId);
+                startActivity(intent);
+            }
+        });
         setSelectTab(Tabs.getChildAt(0));
         // 滚动刷新
         srollView();
@@ -82,6 +94,7 @@ public class Movie extends Fragment {
                     if (object.has("name")) map.put("name", object.getString("name"));
                     if (object.has("grade")) map.put("grade", object.getString("grade"));
                     if (object.has("nation")) map.put("nation", object.getString("nation"));
+                    if (object.has("filmId")) map.put("filmId", object.getString("filmId"));
                     allList.add(map);
                 }
                 adaper.notifyDataSetChanged();

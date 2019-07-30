@@ -29,9 +29,7 @@ import okhttp3.Response;
 
 public class RequestInfo {
     private List<RequestInfo.OnCall> callList = new ArrayList();
-    private int pageNum = 1;
-    private int pageSize = 10;
-    private int ticketFlag = 1;
+    private String filmId = "";
     private Handler handler;
     private JSONObject requeseData;
     public RequestInfo(){
@@ -51,24 +49,9 @@ public class RequestInfo {
             }
         };
     }
-    public void setPageNum(int pageNum) {
-        this.pageNum = pageNum;
-    }
 
-    public int getPageNum() {
-        return pageNum;
-    }
-
-    public int getTicketFlag() {
-        return ticketFlag;
-    }
-
-    public void setTicketFlag(int ticketFlag) {
-        this.ticketFlag = ticketFlag;
-    }
-
-    public void setPageSize(int pageSize) {
-        this.pageSize = pageSize;
+    public void setFilmId(String filmId) {
+        this.filmId = filmId;
     }
 
     public void setRequeseData(JSONObject requeseData) {
@@ -91,7 +74,7 @@ public class RequestInfo {
                         .readTimeout(10, TimeUnit.SECONDS)
                         .build();
                 Request request = new Request.Builder()
-                        .url("https://m.maizuo.com/gateway?filmId="+4750+"&k=592010")
+                        .url("https://m.maizuo.com/gateway?filmId="+filmId+"&k=592010")
                         .addHeader("X-Host", "mall.film-ticket.film.info")
                         .build();
                 try {

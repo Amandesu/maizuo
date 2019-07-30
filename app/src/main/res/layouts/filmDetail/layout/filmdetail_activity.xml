@@ -1,100 +1,150 @@
-<LinearLayout
-    android:layout_height="match_parent"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:background="#f4f4f4"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-    <android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/top_left"
-            android:layout_alignParentTop="true"
-            android:src="@drawable/main_banner1"
-            app:layout_aspectRatio="178.57%"
-            app:layout_widthPercent="100%" />
-    </android.support.percent.PercentRelativeLayout>
-
+    android:layout_height="match_parent">
     <LinearLayout
-        android:background="#fff"
-        android:paddingVertical="12dp"
-        android:paddingHorizontal="15dp"
-        android:orientation="vertical"
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:text="烈火英雄"
-            android:textColor="#191a1b"
-            android:textSize="18dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:text="剧情 | 灾难"
-            android:textColor="#797d82"
-            android:textSize="13dp"
-            android:layout_marginTop="4dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:text="2019-08-01上映"
-            android:textColor="#797d82"
-            android:textSize="13dp"
-            android:layout_marginTop="4dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:text="中国大陆 | 100分钟"
-            android:textColor="#797d82"
-            android:textSize="13dp"
-            android:layout_marginTop="4dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/film_synopsis"
-            android:height="34dp"
-            android:text="滨港市海港码头发生管道爆炸，整个罐区的原油都顺着A01油罐往外流，化成火海和阵阵爆炸，威胁全市、全省，甚至邻国的安全。慌乱的市民们四处奔逃，一辆辆消防车却逆向冲进火海……"
-            android:textColor="#797d82"
-            android:textSize="13dp"
-            android:layout_marginTop="12dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <FrameLayout
-            android:id="@+id/toggle"
-            android:layout_width="match_parent"
-            android:layout_height="16dp">
-            <ImageView
-                android:layout_gravity="center"
-                android:src="@drawable/filmdetail_downarrow"
-                android:layout_width="8dp"
-                android:layout_height="16dp" />
-        </FrameLayout>
-
-
-    </LinearLayout>
-
+        android:orientation="vertical"
+        android:background="#f4f4f4"
+        >
     <LinearLayout
-        android:background="#fff"
-        android:orientation="vertical"
-        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <TextView
-            android:padding="15dp"
-            android:textSize="16dp"
-            android:textColor="#191a1b"
-            android:text="演职人员"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        <ScrollView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/scrollview"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/poster"
+                        android:layout_alignParentTop="true"
+                        app:layout_aspectRatio="178.57%"
+                        app:layout_widthPercent="100%" />
+
+                </android.support.percent.PercentRelativeLayout>
+
+
+
+
+
+
+
+
+                <include
+                    layout="@layout/filmdetail_detail"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="#fff"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="15dp"
+                        android:text="演职人员"
+                        android:textColor="#191a1b"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/filmdetail_actor_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#fff"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp">
+
+                </android.support.v7.widget.RecyclerView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="#fff"
+                    android:orientation="horizontal"
+                    android:paddingBottom="15dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="15dp"
+                        android:text="剧照"
+                        android:textColor="#191a1b"
+                        android:textSize="16dp" />
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"></FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="4dp"
+                        android:layout_marginTop="-2dp"
+                        android:text="全部"
+                        android:textColor="#797d82"
+                        android:textSize="13dp" />
+
+                    <ImageView
+                        android:layout_width="6dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="15dp"
+                        android:src="@drawable/main_fragment_user_rightarrow" />
+                </LinearLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/filmdetail_photo_listview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#fff"
+                    android:paddingBottom="15dp"
+                    android:paddingLeft="15dp"></android.support.v7.widget.RecyclerView>
+
+            </LinearLayout>
+
+        </ScrollView>
     </LinearLayout>
-    <android.support.v7.widget.RecyclerView
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="15dp"
-        android:id="@+id/filmdetail_actor_recycler_view"
+    <TextView
+
+        android:id="@+id/bottom"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:text="选座购票"
+        android:textColor="#fff"
+        android:background="#ff5f16"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </android.support.v7.widget.RecyclerView>
-</LinearLayout>
+        android:layout_height="50dp">
+
+    </TextView>
+    </LinearLayout>
+    <com.maizuo.fiveone.maizuo.customview.RadioGoBack
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        >
+    </com.maizuo.fiveone.maizuo.customview.RadioGoBack>
+</RelativeLayout>
+
