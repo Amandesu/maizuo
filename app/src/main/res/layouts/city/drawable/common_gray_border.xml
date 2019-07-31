@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+            <!-- 边框颜色值 -->
+            <item>
+                <shape>
+                    <solid android:color="#d2d6dc" />
+                </shape>
+            </item>
+
+            <!--这个是按钮边框设置为四周 并且宽度为1-->
+            <item
+                android:right="1dp"
+                android:left="1dp"
+                android:top="1dp"
+                android:bottom="1dp">
+                <shape>
+                    <!--这个是背景颜色-->
+                    <solid android:color="#ffffff" />
+                    <!--这个是按钮中的字体与按钮内的四周边距-->
+                    <padding android:bottom="10dp"
+                        android:left="10dp"
+                        android:right="10dp"
+                        android:top="10dp" />
+                </shape>
+            </item>
+        </layer-list>
+
+

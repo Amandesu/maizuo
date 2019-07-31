@@ -59,6 +59,7 @@ public class Cinema extends Fragment {
         listView.setAdapter(adaper);
         initCimenaCall();
         requestCinema.getCinemaList();
+
         // 城市筛选
         GridLayoutManager manager = new GridLayoutManager(getContext(), 4);
         RecyclerView recyclerView = view.findViewById(R.id.city_recycler_view);
@@ -73,6 +74,9 @@ public class Cinema extends Fragment {
         cityAdaper.setOnItemClickListener(new CityAdaper.OnItemClickListener(){
             public void onItemClick(View v){
                 cityId = (Integer) v.getTag();
+
+                TextView a = (TextView)v.findViewById(R.id.text);
+                a.setSelected(true);
 
                 for (int i = 0; i < cityList.size(); i++) {
                     District d = cityList.get(i);
@@ -131,7 +135,7 @@ public class Cinema extends Fragment {
         }
 
     }
-    class District {
+    public static class District {
         public int cityId;
         public String cityName;
         public int viewType;
