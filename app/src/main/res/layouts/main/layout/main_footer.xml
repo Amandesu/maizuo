@@ -36,9 +36,7 @@
         <ImageView
             android:layout_width="21dp"
             android:layout_height="21dp"
-            android:src="@drawable/main_footer_cinema"
-            android:id="@+id/footer_main_cinema_icon"
-            />
+            android:src="@drawable/main_footer_cinema" />
 
         <TextView
             android:layout_width="match_parent"

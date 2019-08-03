@@ -118,7 +118,6 @@
     </LinearLayout>
     <TextView
 
-        android:id="@+id/bottom"
         android:textSize="16dp"
         android:gravity="center"
         android:text="选座购票"

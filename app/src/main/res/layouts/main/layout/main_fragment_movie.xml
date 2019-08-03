@@ -33,14 +33,12 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:id="@+id/top_left"
                         android:layout_alignParentTop="true"
                         android:src="@drawable/main_banner1"
                         app:layout_aspectRatio="178.57%"
                         app:layout_widthPercent="100%" />
                 </android.support.percent.PercentRelativeLayout>
                 <TextView
-                    android:id="@+id/banner_city"
                     android:layout_width="52dp"
                     android:layout_height="30dp"
                     android:layout_marginLeft="7dp"
