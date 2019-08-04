@@ -10,7 +10,6 @@
         >
     <LinearLayout
         android:layout_weight="1"
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ScrollView
@@ -117,7 +116,7 @@
         </ScrollView>
     </LinearLayout>
     <TextView
-
+        android:id="@+id/footer"
         android:textSize="16dp"
         android:gravity="center"
         android:text="选座购票"

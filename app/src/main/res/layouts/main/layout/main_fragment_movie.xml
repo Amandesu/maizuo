@@ -39,6 +39,7 @@
                         app:layout_widthPercent="100%" />
                 </android.support.percent.PercentRelativeLayout>
                 <TextView
+                    android:id="@+id/city"
                     android:layout_width="52dp"
                     android:layout_height="30dp"
                     android:layout_marginLeft="7dp"

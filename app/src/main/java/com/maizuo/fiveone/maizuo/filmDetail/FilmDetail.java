@@ -2,6 +2,7 @@ package com.maizuo.fiveone.maizuo.filmDetail;
 
 import android.app.ActionBar;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 
 import com.maizuo.fiveone.maizuo.R;
 import com.maizuo.fiveone.maizuo.Utils;
+import com.maizuo.fiveone.maizuo.cinemas.CinemasActivity;
 import com.maizuo.fiveone.maizuo.main.Fragment.cinema.Cinema;
 import com.maizuo.fiveone.maizuo.main.Fragment.cinema.CityAdaper;
 import com.maizuo.fiveone.maizuo.main.Fragment.cinema.RequestCinema;
@@ -53,12 +55,21 @@ public class FilmDetail extends AppCompatActivity {
 
         String filmId = getIntent().getStringExtra("filmId");
         requestInfo.setFilmId(filmId);
-        Log.i("aaa", filmId);
 
         initActorAdaper();
         initPhotoAdaper();
         initCimenaCall();
+        initBindEvent();
         requestInfo.getFilmInfo();
+    }
+    public void initBindEvent(){
+        findViewById(R.id.footer).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FilmDetail.this, CinemasActivity.class);
+                startActivity(intent);
+            }
+        });
     }
     public void initActorAdaper(){
         LinearLayoutManager  manager = new LinearLayoutManager(getBaseContext());

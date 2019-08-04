@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.ScrollView;
 
 import com.maizuo.fiveone.maizuo.R;
+import com.maizuo.fiveone.maizuo.RN.MyReactActivity;
 import com.maizuo.fiveone.maizuo.filmDetail.FilmDetail;
 import com.maizuo.fiveone.maizuo.main.MainActivity;
 
@@ -55,10 +56,29 @@ public class Movie extends Fragment {
         super.onActivityCreated(savedInstanceState);
         Tabs = (ViewGroup)view.findViewById(R.id.tabs);
         HeaderTabs =  (ViewGroup)view.findViewById(R.id.header_tabs);
+
+
+        initMovieCall();
+        initMovieAdaper();
+        intEvent();
+        // 滚动刷新
+        srollView();
+    }
+    public void  intEvent(){
+        // 点击城市
+        view.findViewById(R.id.city).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), MyReactActivity.class);
+                startActivity(intent);
+            }
+        });
+        // tab事件
         initTabsEvent(Tabs);
         initTabsEvent(HeaderTabs);
-        initMovieCall();
-        // 获取电影列表
+        setSelectTab(Tabs.getChildAt(0));
+    }
+    public void initMovieAdaper(){
         adaper = new ListAdaper(allList, getContext());
         listView = (ListView)view.findViewById(R.id.list);
         listView.setAdapter(adaper);
@@ -71,9 +91,6 @@ public class Movie extends Fragment {
                 startActivity(intent);
             }
         });
-        setSelectTab(Tabs.getChildAt(0));
-        // 滚动刷新
-        srollView();
     }
     // 注册回调数据
     public void initMovieCall(){
