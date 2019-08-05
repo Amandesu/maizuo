@@ -27,6 +27,7 @@ public class MyReactActivity extends AppCompatActivity implements DefaultHardwar
                 .setBundleAssetName("index.android.city01.bundle")
                 .setJSMainModulePath("index")
                 .addPackage(new MainReactPackage())
+                .addPackage(new BridgePackage())
                 //.setUseDeveloperSupport(BuildConfig.DEBUG)
                 .setInitialLifecycleState(LifecycleState.RESUMED)
                 .build();

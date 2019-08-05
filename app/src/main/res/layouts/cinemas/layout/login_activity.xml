@@ -1,0 +1,48 @@
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:paddingTop="80dp"
+        android:paddingBottom="40dp"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/application_logo"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:paddingHorizontal="25dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:textColor="@color/colorPrimary"
+            android:hint="用户名"
+            android:text="leiwuyi456"
+            android:layout_width="match_parent"
+            android:layout_height="55dp" />
+        <android.support.design.widget.TextInputEditText
+            android:textColor="@color/colorPrimary"
+            android:hint="密码"
+            android:text="123456"
+            android:layout_width="match_parent"
+            android:layout_height="55dp" />
+        <TextView
+            android:id="@+id/sumit"
+            android:gravity="center"
+            android:background="#ff5f16"
+            android:textColor="#fff"
+            android:textSize="16dp"
+            android:text="登录"
+            android:layout_marginTop="70dp"
+            android:layout_width="match_parent"
+            android:layout_height="44dp" />
+    </LinearLayout>
+</LinearLayout>
