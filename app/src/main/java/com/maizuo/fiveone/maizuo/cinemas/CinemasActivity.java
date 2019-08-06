@@ -2,18 +2,23 @@ package com.maizuo.fiveone.maizuo.cinemas;
 
 
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.maizuo.fiveone.maizuo.R;
+import com.maizuo.fiveone.maizuo.RN.DevActivity;
+import com.maizuo.fiveone.maizuo.RN.MyReactActivity;
 import com.maizuo.fiveone.maizuo.filmDetail.ActorAdaper;
 import com.maizuo.fiveone.maizuo.main.Fragment.cinema.Cinema;
 import com.maizuo.fiveone.maizuo.main.Fragment.cinema.CityAdaper;
@@ -97,6 +102,16 @@ public class CinemasActivity extends AppCompatActivity {
         initRangeSelectEvent();
         initCityItemClick();
         initDateItemClick();
+        initCinemasItemClick();
+        initBackClick();
+    }
+    public void initBackClick(){
+        findViewById(R.id.goback).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
     public void initRangeSelectEvent(){
         rangeTabs = (ViewGroup)findViewById(R.id.range_select);
@@ -129,6 +144,18 @@ public class CinemasActivity extends AppCompatActivity {
                 text.setText(cityName);
                 setRangeSelectTab(activeRangeIndex);
                 cityAdaper.notifyDataSetChanged();
+            }
+        });
+    }
+    public void initCinemasItemClick(){
+        adaper.setOnItemClickListener(new ListAdaper.OnItemClickListener(){
+            @Override
+            public void onItemClick(View view, String cinemaId) {
+
+                Intent intent = new Intent(CinemasActivity.this, MyReactActivity.class);
+                intent.putExtra("data", cinemaId);
+                intent.putExtra("module", "cinemaDetail");
+                startActivity(intent);
             }
         });
     }
@@ -219,7 +246,8 @@ public class CinemasActivity extends AppCompatActivity {
                     }
                     // 电影院数据
                     Map map = new HashMap<String, Object>();
-                    String address = "", name = ""; String lowPrice = "";
+                    String address = "", name = ""; String lowPrice = "", cinemaId = "";
+                    if (object.has("cinemaId")) map.put("cinemaId", object.getString("cinemaId"));
                     if (object.has("name")) map.put("name", object.getString("name"));
                     if (object.has("address")) map.put("address", object.getString("address"));
                     if (object.has("lowPrice")){

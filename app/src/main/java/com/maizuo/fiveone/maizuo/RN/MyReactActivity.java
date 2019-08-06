@@ -4,6 +4,7 @@ package com.maizuo.fiveone.maizuo.RN;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactRootView;
@@ -20,11 +21,13 @@ public class MyReactActivity extends AppCompatActivity implements DefaultHardwar
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        String module = MyReactActivity.this.getIntent().getStringExtra("module");
+
         mReactRootView = new ReactRootView(this);
         mReactInstanceManager = ReactInstanceManager.builder()
                 .setApplication(getApplication())
                 .setCurrentActivity(this)
-                .setBundleAssetName("index.android.city01.bundle")
+                .setBundleAssetName("index.android."+module+"01.bundle")
                 .setJSMainModulePath("index")
                 .addPackage(new MainReactPackage())
                 .addPackage(new BridgePackage())

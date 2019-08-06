@@ -50,6 +50,19 @@
                     android:text="深圳"
                     android:textColor="#fff"
                     android:textSize="13dp" />
+
+                <TextView
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/rndev"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginTop="13dp"
+                    android:gravity="center"
+                    android:radius="16dp"
+                    android:text="rn"
+                    android:textColor="#fff"
+                    android:textSize="13dp" />
             </RelativeLayout>
             <include
                 android:id="@+id/tabs"

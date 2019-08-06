@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.ScrollView;
 
 import com.maizuo.fiveone.maizuo.R;
+import com.maizuo.fiveone.maizuo.RN.DevActivity;
 import com.maizuo.fiveone.maizuo.RN.MyReactActivity;
 import com.maizuo.fiveone.maizuo.filmDetail.FilmDetail;
 import com.maizuo.fiveone.maizuo.main.MainActivity;
@@ -70,6 +71,14 @@ public class Movie extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), MyReactActivity.class);
+                intent.putExtra("module", "city");
+                startActivity(intent);
+            }
+        });
+        view.findViewById(R.id.rndev).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), DevActivity.class);
                 startActivity(intent);
             }
         });

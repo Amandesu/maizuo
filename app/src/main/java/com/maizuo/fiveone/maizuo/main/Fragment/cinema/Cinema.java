@@ -167,6 +167,7 @@ public class Cinema extends Fragment {
                         cityList.add(district);
                     }
                     String address = "", name = ""; String lowPrice = "";
+                    if (object.has("cinemaId")) map.put("cinemaId", object.getString("cinemaId"));
                     if (object.has("name")) map.put("name", object.getString("name"));
                     if (object.has("address")) map.put("address", object.getString("address"));
                     if (object.has("lowPrice")){

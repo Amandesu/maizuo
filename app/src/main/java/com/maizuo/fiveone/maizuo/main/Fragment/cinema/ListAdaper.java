@@ -21,6 +21,7 @@ public class ListAdaper extends BaseAdapter {
     private List<Map<String, Object>> Datas;
     private Drawable drawable;
     private Context mContext;
+    private OnItemClickListener mOnItemClickListener;
 
     public ListAdaper(List<Map<String, Object>> datas, Context mContext) {
         Datas = datas;
@@ -60,6 +61,12 @@ public class ListAdaper extends BaseAdapter {
         public TextView address;
         public TextView lowPrice;
     }
+    public static interface OnItemClickListener {
+        void onItemClick(View view ,String cinemaId);
+    }
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.mOnItemClickListener = listener;
+    }
     @Override
     public View getView(int i, View convertView, ViewGroup viewGroup) {
         final HashMap<String, String> item = (HashMap)getItem(i);
@@ -76,6 +83,12 @@ public class ListAdaper extends BaseAdapter {
             view = convertView;
             holder = (ViewHolder)view.getTag();
         }
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mOnItemClickListener.onItemClick(v, item.get("cinemaId"));
+            }
+        });
 
         holder.name.setText(item.get("name"));
         holder.address.setText(item.get("address"));
