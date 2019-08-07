@@ -47,6 +47,7 @@
 ### 某个电影的影城列表页面
 
 <img src="https://github.com/Amandesu/maizuo/raw/master/assets/cinemas.jpg"  width="300" height="620"/>
+
 ### 登录页面
 
 <img src="https://github.com/Amandesu/maizuo/raw/master/assets/login.jpg"  width="300" height="620"/>
