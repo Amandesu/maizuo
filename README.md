@@ -11,5 +11,7 @@
 ### 首页`Main`
 下面有三个`fragment`
 1. movie(已完成)
-2. cinima(未完成)
-3. user(未完成)
+2. cinima(已完成)
+3. user(已完成)
+
+

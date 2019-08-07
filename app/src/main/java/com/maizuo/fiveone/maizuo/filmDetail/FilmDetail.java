@@ -2,10 +2,12 @@ package com.maizuo.fiveone.maizuo.filmDetail;
 
 import android.app.ActionBar;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.maizuo.fiveone.maizuo.R;
 import com.maizuo.fiveone.maizuo.Utils;
@@ -23,6 +26,7 @@ import com.maizuo.fiveone.maizuo.cinemas.CinemasActivity;
 import com.maizuo.fiveone.maizuo.main.Fragment.cinema.Cinema;
 import com.maizuo.fiveone.maizuo.main.Fragment.cinema.CityAdaper;
 import com.maizuo.fiveone.maizuo.main.Fragment.cinema.RequestCinema;
+import com.maizuo.fiveone.maizuo.main.MainActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,6 +52,7 @@ public class FilmDetail extends AppCompatActivity {
     private List<String> photoList = new ArrayList<String>();
     private ActorAdaper actorAdaper;
     private PhotoAdaper photoAdaper;
+    JSONObject film = new JSONObject();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,9 +70,32 @@ public class FilmDetail extends AppCompatActivity {
     public void initBindEvent(){
         findViewById(R.id.footer).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(FilmDetail.this, CinemasActivity.class);
-                startActivity(intent);
+            public void onClick(View view)  {
+                try{
+                    if (film.getBoolean("isSale") == false) {
+                        AlertDialog.Builder builder  = new AlertDialog.Builder(FilmDetail.this);
+                        builder.setTitle("提示" ) ;
+                        builder.setMessage("电影尚未排期，到首页看看其他电影吧" ) ;
+                        builder.setPositiveButton("同意" ,  new AlertDialog.OnClickListener(){
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(FilmDetail.this, MainActivity.class);
+                                startActivity(intent);
+                            }
+                        });
+                        builder.setNegativeButton("拒绝" ,  null );
+                        builder.show();
+                        return;
+                    }
+                    Intent intent = new Intent(FilmDetail.this, CinemasActivity.class);
+                    String filmId = getIntent().getStringExtra("filmId");
+                    intent.putExtra("filmId", filmId);
+                    startActivity(intent);
+
+                } catch (JSONException e){
+
+                }
+
             }
         });
     }
@@ -97,7 +125,7 @@ public class FilmDetail extends AppCompatActivity {
             @Override
             public void OnCallBack(JSONObject responseData) throws JSONException {
                 JSONObject data = (JSONObject) responseData.get("data");
-                JSONObject film = (JSONObject) data.get("film");
+                film = (JSONObject) data.get("film");
                 // 渲染详情
                 renderDetail(film);
 

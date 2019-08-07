@@ -1,5 +1,6 @@
 package com.maizuo.fiveone.maizuo.main.Fragment.cinema;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.maizuo.fiveone.maizuo.R;
+import com.maizuo.fiveone.maizuo.RN.MyReactActivity;
+import com.maizuo.fiveone.maizuo.cinemas.CinemasActivity;
 
 
 import org.json.JSONArray;
@@ -54,23 +57,38 @@ public class Cinema extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         // 获取电影院数据
-        adaper = new ListAdaper(allList, getContext());
-        listView = (ListView)view.findViewById(R.id.list);
-        listView.setAdapter(adaper);
-        initCimenaCall();
-        requestCinema.getCinemaList();
 
-        // 城市筛选
-        GridLayoutManager manager = new GridLayoutManager(getContext(), 4);
-        RecyclerView recyclerView = view.findViewById(R.id.city_recycler_view);
-        recyclerView.setLayoutManager(manager);
-        cityAdaper = new CityAdaper(cityList, getContext());
-        recyclerView.setAdapter(cityAdaper);
+        initCimenaCall();
+        initListAdper();
+        initCityAdper();
+        requestCinema.getCinemaList();
         // 初始化筛选事件
         initSelectEvent();
         // 设置筛选项的样式
         setOptionStyle();
 
+
+    }
+    public void initListAdper(){
+        adaper = new ListAdaper(allList, getContext());
+        listView = (ListView)view.findViewById(R.id.list);
+        listView.setAdapter(adaper);
+        adaper.setOnItemClickListener(new ListAdaper.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, String cinemaId) {
+                Intent intent = new Intent(getActivity(), MyReactActivity.class);
+                intent.putExtra("data", cinemaId);
+                intent.putExtra("module", "cinemaDetail");
+                startActivity(intent);
+            }
+        });
+
+    }
+    public void initCityAdper(){
+        GridLayoutManager manager = new GridLayoutManager(getContext(), 4);
+        RecyclerView recyclerView = view.findViewById(R.id.city_recycler_view);
+        recyclerView.setLayoutManager(manager);
+        cityAdaper = new CityAdaper(cityList, getContext());
         cityAdaper.setOnItemClickListener(new CityAdaper.OnItemClickListener(){
             public void onItemClick(View v){
                 cityId = (Integer) v.getTag();
@@ -94,8 +112,7 @@ public class Cinema extends Fragment {
                 cityAdaper.notifyDataSetChanged();
             }
         });
-
-
+        recyclerView.setAdapter(cityAdaper);
     }
     public void initSelectEvent(){
         ViewGroup tabs = (ViewGroup)view.findViewById(R.id.select);

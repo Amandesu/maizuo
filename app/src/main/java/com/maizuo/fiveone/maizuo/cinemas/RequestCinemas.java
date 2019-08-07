@@ -36,6 +36,11 @@ public class RequestCinemas {
     private List<RequestCinemas.OnCall> callList = new ArrayList();
     private Handler handler;
     private JSONObject requeseData;
+    private  String filmId;
+
+    public void setFilmId(String filmId) {
+        this.filmId = filmId;
+    }
 
     public RequestCinemas(){
         handler = new Handler(){
@@ -75,7 +80,7 @@ public class RequestCinemas {
                         .readTimeout(10, TimeUnit.SECONDS)
                         .build();
                 Request request = new Request.Builder()
-                        .url("https://m.maizuo.com/gateway?cityId="+ Utils.getCityInfo().getCityId()+"&filmId="+4760+"&k=4243962")
+                        .url("https://m.maizuo.com/gateway?cityId="+ Utils.getCityInfo().getCityId()+"&filmId="+filmId+"&k=4243962")
                         .addHeader("X-Host", "mall.film-ticket.cinema.film-show-cinema")
                         .build();
                 try {

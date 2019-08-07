@@ -65,9 +65,12 @@ public class ListAdaper extends BaseAdapter {
         public TextView grade;
         public TextView name;
         public TextView nation;
+        public TextView actors;
+        public TextView buyTicket;
     }
     public static interface OnItemClickListener {
         void onItemClick(String filmId);
+        void onBtnClick(String filmId);
     }
     public void setOnItemClickListener(OnItemClickListener listener){
         mOnItemClickListener = listener;
@@ -84,6 +87,8 @@ public class ListAdaper extends BaseAdapter {
             holder.nation = (TextView) view.findViewById(R.id.nation);
             holder.grade = (TextView) view.findViewById(R.id.grade);
             holder.poster = (ImageView)view.findViewById(R.id.poster);
+            holder.actors = (TextView)view.findViewById(R.id.actors);
+            holder.buyTicket = (TextView)view.findViewById(R.id.buytickey);
             new Thread(new Runnable(){
                 @Override
                 public void run() {
@@ -107,9 +112,27 @@ public class ListAdaper extends BaseAdapter {
                 mOnItemClickListener.onItemClick(item.get("filmId"));
             }
         });
+        holder.buyTicket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mOnItemClickListener.onBtnClick(item.get("filmId"));
+            }
+        });
+
         holder.name.setText(item.get("name"));
-        holder.nation.setText(item.get("nation"));
+        holder.actors.setText("主演："+item.get("actor"));
+        holder.nation.setText(item.get("nation")+" | "+item.get("runtime")+"分钟");
         holder.grade.setText(item.get("grade"));
+        if (Integer.parseInt(item.get("filmType")) == 1) {
+            holder.buyTicket.setText("购买");
+            holder.buyTicket.setVisibility(View.VISIBLE);
+        } else {
+            holder.buyTicket.setText("预售");
+            if ("false".equals(item.get("isPresale"))) {
+                holder.buyTicket.setVisibility(View.GONE);
+            }
+
+        }
 
         return view;
     }

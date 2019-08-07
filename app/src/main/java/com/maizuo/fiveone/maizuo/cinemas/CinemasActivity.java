@@ -1,8 +1,6 @@
 package com.maizuo.fiveone.maizuo.cinemas;
 
 
-
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -20,6 +18,8 @@ import com.maizuo.fiveone.maizuo.R;
 import com.maizuo.fiveone.maizuo.RN.DevActivity;
 import com.maizuo.fiveone.maizuo.RN.MyReactActivity;
 import com.maizuo.fiveone.maizuo.filmDetail.ActorAdaper;
+import com.maizuo.fiveone.maizuo.filmDetail.FilmDetail;
+import com.maizuo.fiveone.maizuo.filmDetail.RequestInfo;
 import com.maizuo.fiveone.maizuo.main.Fragment.cinema.Cinema;
 import com.maizuo.fiveone.maizuo.main.Fragment.cinema.CityAdaper;
 import com.maizuo.fiveone.maizuo.main.Fragment.cinema.ListAdaper;
@@ -30,6 +30,10 @@ import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,6 +55,7 @@ public class CinemasActivity extends AppCompatActivity {
 
     private RequestCinemas requestCinemas = new RequestCinemas();
     private RequestCinemaList requestCinemaList = new RequestCinemaList();
+    private RequestInfo requestInfo = new RequestInfo();
 
     private JSONArray showCinemas;
     private int activeDateIndex = 0;
@@ -63,12 +68,19 @@ public class CinemasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cinemas_activity);
         // 注册请求响应
-        initMovieCall();
+        initFilmInfoCall();
+        initCinemasCall();
         intCinmaListCall();
+
         initDateAdaper();
         initCityAdaper();
         initCinemasAdaper();
         initOnclickEvent();
+        // 获取请求参数
+        String filmId = getIntent().getStringExtra("filmId");
+        requestInfo.setFilmId(filmId);
+        requestInfo.getFilmInfo();
+        requestCinemas.setFilmId(filmId);
         requestCinemas.getCinemas();
     }
     public void initDateAdaper(){
@@ -104,6 +116,13 @@ public class CinemasActivity extends AppCompatActivity {
         initDateItemClick();
         initCinemasItemClick();
         initBackClick();
+
+        findViewById(R.id.mask).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toggleMask(false);
+            }
+        });
     }
     public void initBackClick(){
         findViewById(R.id.goback).setOnClickListener(new View.OnClickListener() {
@@ -152,7 +171,7 @@ public class CinemasActivity extends AppCompatActivity {
             @Override
             public void onItemClick(View view, String cinemaId) {
 
-                Intent intent = new Intent(CinemasActivity.this, MyReactActivity.class);
+               Intent intent = new Intent(CinemasActivity.this, MyReactActivity.class);
                 intent.putExtra("data", cinemaId);
                 intent.putExtra("module", "cinemaDetail");
                 startActivity(intent);
@@ -160,34 +179,52 @@ public class CinemasActivity extends AppCompatActivity {
         });
     }
     public void setRangeSelectTab(int index) {
-        View mask = findViewById(R.id.mask);
         TextView activeTextView =  (TextView)rangeTabs.getChildAt(index);
-        ViewGroup groupOptions =  (ViewGroup)findViewById(R.id.options);
-        for (int j =0; j < groupOptions.getChildCount(); j++) {
-            View opt = groupOptions.getChildAt(j);
-            opt.setVisibility(View.GONE);
+        if (index != activeRangeIndex) {
+            activeRangeIndex = index;
+            toggleMask(true);
+            activeTextView.setTextColor(Color.parseColor("#ff5f16"));
+        } else {
+            activeRangeIndex = -1;
+            toggleMask(false);
         }
-        // 高亮
+    }
+    // 切换弹窗
+    public void toggleMask(Boolean isshow){
+        View mask = findViewById(R.id.mask);
+        ViewGroup groupOptions =  (ViewGroup)findViewById(R.id.options);
+        // tab样式初始化
         for (int i = 0; i < rangeTabs.getChildCount(); i++) {
             TextView tabPane = (TextView)rangeTabs.getChildAt(i);
             tabPane.setTextColor(Color.parseColor("#191a1b"));
         }
-        if (index != activeRangeIndex) {
-            activeRangeIndex = index;
-
-            listView.setVisibility(View.GONE);
-            groupOptions.getChildAt(index).setVisibility(View.VISIBLE);
-            mask.setVisibility(View.VISIBLE);
-            activeTextView.setTextColor(Color.parseColor("#ff5f16"));
-
-        } else {
-            activeRangeIndex = -1;
-            listView.setVisibility(View.VISIBLE);
-            groupOptions.getChildAt(index).setVisibility(View.GONE);
-            mask.setVisibility(View.GONE);
+        for (int j =0; j < groupOptions.getChildCount(); j++) {
+            View opt = groupOptions.getChildAt(j);
+            opt.setVisibility(View.GONE);
         }
+        if (isshow == false) {
+            mask.setVisibility(View.GONE);
+            listView.setVisibility(View.VISIBLE);
+        } else {
+            mask.setVisibility(View.VISIBLE);
+            listView.setVisibility(View.GONE);
+            groupOptions.getChildAt(activeRangeIndex).setVisibility(View.VISIBLE);
+        }
+
     }
-    public void initMovieCall() {
+    public void initFilmInfoCall() {
+        requestInfo.setOnCall(new RequestInfo.OnCall() {
+            @Override
+            public void OnCallBack(JSONObject responseData) throws JSONException {
+                JSONObject data = (JSONObject) responseData.get("data");
+                JSONObject film = (JSONObject) data.get("film");
+                TextView title = (TextView)findViewById(R.id.title);
+                title.setText(film.getString("name"));
+
+            }
+        });
+    }
+    public void initCinemasCall() {
         requestCinemas.setOnCall(new RequestCinemas.OnCall() {
             @Override
             public void OnCallBack(JSONObject responseData) throws JSONException {
@@ -195,13 +232,40 @@ public class CinemasActivity extends AppCompatActivity {
                 JSONObject data = (JSONObject) responseData.get("data");
                 showCinemas = (JSONArray) data.get("showCinemas");
                 // 日期列表
+
+
                 Map<String, String> dateMap = new HashMap<>();
+                final String dayNames[] = { "周日", "周一", "周二", "周三", "周四", "周五","周六" };
+                Calendar calendar = Calendar.getInstance();
+
+
                 for (int i = 0; i < showCinemas.length();i++) {
                     Map<String, Object> map = new HashMap<>();
                     JSONObject cinema = (JSONObject)showCinemas.get(i);
-                    map.put("name", new SimpleDateFormat( "EEEEMM月dd日" ).format( cinema.getLong("showDate")*1000));
+
+                    Date date = new Date(cinema.getLong("showDate")*1000);
+                    calendar.setTime(date);
+                    int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)-1;
+
+
+                    map.put("name", dayNames[dayOfWeek]+new SimpleDateFormat( "MM月dd日" ).format( cinema.getLong("showDate")*1000));
+                    map.put("showDate", cinema.getString("showDate"));
                     dateList.add(map);
                 }
+                Collections.sort(dateList, new Comparator<Map<String, String>>(){
+                    public int compare(Map<String, String> o1, Map<String, String> o2) {
+                        int a = Integer.parseInt(o1.get("showDate"));
+                        int b = Integer.parseInt(o2.get("showDate"));
+                        if (a > b) {
+                            return 1;
+                        } else if(a == b) {
+                            return 0;
+                        } else
+                            return -1;
+
+                    }
+                });
+
                 dateAdaper.notifyDataSetChanged();
                 getCinemaList();
             }

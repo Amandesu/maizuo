@@ -16,11 +16,7 @@
         <shape>
             <!--这个是背景颜色-->
             <solid android:color="#ffffff" />
-            <!--这个是按钮中的字体与按钮内的四周边距-->
-            <padding android:bottom="10dp"
-                android:left="10dp"
-                android:right="10dp"
-                android:top="10dp" />
+
         </shape>
     </item>
 </layer-list>

@@ -16,6 +16,7 @@ import android.widget.ScrollView;
 import com.maizuo.fiveone.maizuo.R;
 import com.maizuo.fiveone.maizuo.RN.DevActivity;
 import com.maizuo.fiveone.maizuo.RN.MyReactActivity;
+import com.maizuo.fiveone.maizuo.cinemas.CinemasActivity;
 import com.maizuo.fiveone.maizuo.filmDetail.FilmDetail;
 import com.maizuo.fiveone.maizuo.main.MainActivity;
 
@@ -94,12 +95,18 @@ public class Movie extends Fragment {
         adaper.setOnItemClickListener(new ListAdaper.OnItemClickListener(){
             @Override
             public void onItemClick(String filmId) {
-
                 Intent intent = new Intent(getActivity(), FilmDetail.class);
                 intent.putExtra("filmId", filmId);
                 startActivity(intent);
             }
+            @Override
+            public void onBtnClick(String filmId) {
+                Intent intent = new Intent(getActivity(), CinemasActivity.class);
+                intent.putExtra("filmId", filmId);
+                startActivity(intent);
+            }
         });
+
     }
     // 注册回调数据
     public void initMovieCall(){
@@ -115,12 +122,23 @@ public class Movie extends Fragment {
                 for (int i = 0; i < films.length(); i++) {
                     Map map = new HashMap<String, Object>();
                     JSONObject object = (JSONObject) films.get(i);
-                    String poster = "", name = "", grade="", nation="";
+                    JSONArray actors = object.getJSONArray("actors");
+                    String poster = "", name = "", grade="", nation="", runtime=""; StringBuffer actor = new StringBuffer();
+                    for (int j = 0; j < actors.length(); j++) {
+                        JSONObject _actor = (JSONObject) films.get(i);
+                        actor.append(_actor.getString("name"));
+                    }
                     if (object.has("poster")) map.put("poster", object.getString("poster"));
                     if (object.has("name")) map.put("name", object.getString("name"));
                     if (object.has("grade")) map.put("grade", object.getString("grade"));
                     if (object.has("nation")) map.put("nation", object.getString("nation"));
                     if (object.has("filmId")) map.put("filmId", object.getString("filmId"));
+                    if (object.has("runtime")) map.put("runtime", object.getString("runtime"));
+
+                    map.put("actor", actor.toString());
+                    map.put("isPresale", object.getString("isPresale"));
+                    map.put("filmType", ""+(activeIndex+1));
+
                     allList.add(map);
                 }
                 adaper.notifyDataSetChanged();

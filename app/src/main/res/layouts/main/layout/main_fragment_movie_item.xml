@@ -12,18 +12,19 @@
         android:layout_width="66dp"
         android:layout_height="94dp"
         />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_weight="1"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:gravity="center"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         android:layout_height="match_parent">
-
         <LinearLayout
-            android:layout_width="match_parent"
+            android:paddingRight="10dp"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
             android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/name"
@@ -34,49 +35,45 @@
                 android:text="黑衣人：全球通缉"
                 >
             </TextView>
-        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textSize="13dp"
+                    android:textColor="#797d82"
+                    android:text="观众评分"
+                    >
+                </TextView>
+                <TextView
+                    android:id="@+id/grade"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textSize="14dp"
+                    android:textColor="#ffb232"
+                    android:text="7"
+                    >
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:id="@+id/actors"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textSize="13dp"
+                    android:textColor="#797d82"
+                    android:text="主演"
+                    >
+                </TextView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:textSize="13dp"
-                android:textColor="#797d82"
-                android:text="观众评分"
-                >
-            </TextView>
-            <TextView
-                android:id="@+id/grade"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:textSize="14dp"
-                android:textColor="#ffb232"
-                android:text="7"
-                >
-            </TextView>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:textSize="13dp"
-                android:textColor="#797d82"
-                android:text="主演"
-                >
-            </TextView>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            </LinearLayout>
             <TextView
                 android:id="@+id/nation"
                 android:layout_height="wrap_content"
@@ -87,6 +84,15 @@
                 >
             </TextView>
         </LinearLayout>
+        <TextView
+            android:id="@+id/buytickey"
+            android:background="@drawable/common_orange_border"
+            android:gravity="center"
+            android:text="购票"
+            android:textColor="@color/colorOrange"
+            android:textSize="13dp"
+            android:layout_width="50dp"
+            android:layout_height="25dp" />
     </LinearLayout>
 </LinearLayout>
 
