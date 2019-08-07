@@ -26,7 +26,7 @@
 1. movie(已完成)
 2. cinima(已完成)
 3. user(已完成)
-![电影](cinima://github.com/Amandesu/maizuo/raw/master/assets/movie.jpg)
+![电影](https://github.com/Amandesu/maizuo/raw/master/assets/movie.jpg)
 ![影院](https://github.com/Amandesu/maizuo/raw/master/assets/cinema.jpg)
 ![用户中心](https://github.com/Amandesu/maizuo/raw/master/assets/user.jpg)
 
