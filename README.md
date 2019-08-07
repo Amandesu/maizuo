@@ -37,7 +37,7 @@
 
 ### 登录页面
 
-![登录页面]("https://github.com/Amandesu/maizuo/raw/master/assets/login.jpg")
+![登录页面](https://github.com/Amandesu/maizuo/raw/master/assets/login.jpg)
 ## `git`地址
 为了便于管理`ReactNative`的项目我抽离出来了
 
