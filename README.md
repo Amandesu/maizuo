@@ -43,12 +43,14 @@
 ### 影城详情页面
 
 <img src="https://github.com/Amandesu/maizuo/raw/master/assets/cinema_detail_rn.jpg"  width="300" height="620"/>
+
 ### 某个电影的影城列表页面
 
 <img src="https://github.com/Amandesu/maizuo/raw/master/assets/cinemas.jpg"  width="300" height="620"/>
 ### 登录页面
 
 <img src="https://github.com/Amandesu/maizuo/raw/master/assets/login.jpg"  width="300" height="620"/>
+
 ## `git`和下载地址
 为了便于管理`ReactNative`的项目我抽离出来了
 
