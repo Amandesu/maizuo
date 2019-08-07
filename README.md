@@ -26,18 +26,20 @@
 1. movie(已完成)
 2. cinima(已完成)
 3. user(已完成)
+![电影](cinima://github.com/Amandesu/maizuo/raw/master/assets/movie.jpg)
+![影院](https://github.com/Amandesu/maizuo/raw/master/assets/cinema.jpg)
+![用户中心](https://github.com/Amandesu/maizuo/raw/master/assets/user.jpg)
 
 ### 城市页面
-
+![某个电影的影城列表页面](https://github.com/Amandesu/maizuo/raw/master/assets/city_rn.jpg)
 ### 电影详情页面
-
+![电影详情页面](https://github.com/Amandesu/maizuo/raw/master/assets/film_detail.jpg)
 ### 影城详情页面`
-
+![影城详情页面](https://github.com/Amandesu/maizuo/raw/master/assets/cinema_detail_rn.jpg)
 ### 某个电影的影城列表页面
-
+![某个电影的影城列表页面](https://github.com/Amandesu/maizuo/raw/master/assets/cinemas.jpg)
 ### 登录页面
-
-![登录页面]("https://github.com/Amandesu/maizuo/blob/master/assets/login.jpg")
+![登录页面](https://github.com/Amandesu/maizuo/raw/master/assets/login.jpg)
 ## `git`地址
 为了便于管理`ReactNative`的项目我抽离出来了
 
