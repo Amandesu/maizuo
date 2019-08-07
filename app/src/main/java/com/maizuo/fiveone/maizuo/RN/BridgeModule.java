@@ -99,13 +99,13 @@ public class BridgeModule extends ReactContextBaseJavaModule{
         onScanningResult();
     }
     @ReactMethod
-    public void testAndroidCallbackMethod(String msg, Callback callback){
+    public void CallbackMethod(String msg, Callback callback){
         Toast.makeText(getReactApplicationContext(),msg,Toast.LENGTH_LONG).show();
         callback.invoke("abc");
     }
 
     @ReactMethod
-    public void textAndroidPromiseMethod(String msg, Promise promise){
+    public void PromiseMethod(String msg, Promise promise){
         Toast.makeText(getReactApplicationContext(),msg,Toast.LENGTH_SHORT).show();
         String result="leiwuyi";
         promise.resolve(result);
