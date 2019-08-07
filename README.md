@@ -6,6 +6,7 @@
 `Android 5.0+`
 `Android Studio3.0+`
 `Gradle 4.1`
+`ReactNative@0.59.5`
 
 ## `ReactNative`与`Android`通信
 主要通过`BridgeModule`
@@ -18,7 +19,7 @@
 
 ## 页面结构
 
-为了便于管理`ReactNative`的项目我抽离出来了一个目录代表一个活动,下面是正在开发中的页面
+一个目录代表一个活动,下面是已经开放完成页面
 
 ### 首页
 下面有三个`fragment`
@@ -35,6 +36,17 @@
 ### 某个电影的影城列表页面
 
 ### 登录页面
+
+![登录页面]("https://github.com/Amandesu/maizuo/blob/master/assets/login.jpg")
+## `git`地址
+为了便于管理`ReactNative`的项目我抽离出来了
+
+[android]("https://github.com/Amandesu/maizuo")项目地址
+[ReactNative]("https://github.com/Amandesu/maizuoRN")项目地址.
+
+如果大家有所帮助，可以给个[star]("https://github.com/Amandesu/maizuoRN"). 作者将更有动力更新和优化这个项目,不胜感激!
+
+
 
 
 
