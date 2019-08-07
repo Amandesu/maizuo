@@ -57,7 +57,7 @@
 
 [sdk下载地址]("https://github.com/Amandesu/maizuo/blob/master/app/release/app-release.apk")项目地址
 [android]("https://github.com/Amandesu/maizuo")项目地址
-[ReactNative]("https://github.com/Amandesu/maizuoRN")项目地址.
+[ReactNative](https://github.com/Amandesu/maizuoRN)项目地址.
 
 如果大家有所帮助，可以给个[star]("https://github.com/Amandesu/maizuoRN"). 作者将更有动力更新和优化这个项目,不胜感激!
 
