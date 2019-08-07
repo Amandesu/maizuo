@@ -49,9 +49,10 @@
 ### 登录页面
 
 <img src="https://github.com/Amandesu/maizuo/raw/master/assets/login.jpg"  width="300" height="620"/>
-## `git`地址
+## `git`和下载地址
 为了便于管理`ReactNative`的项目我抽离出来了
 
+[sdk下载地址]("https://github.com/Amandesu/maizuo/blob/master/app/release/app-release.apk")项目地址
 [android]("https://github.com/Amandesu/maizuo")项目地址
 [ReactNative]("https://github.com/Amandesu/maizuoRN")项目地址.
 
