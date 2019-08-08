@@ -17,9 +17,6 @@
 `closeWindow` | 关闭当前页面 |
 `getDataFromIntent` | 打开`RN`页面的时候传入参数 | 
 `openLink` | 从`RN`页面跳转至安卓页面 | 
-`closeWindow` | 关闭当前页面 |
-`getDataFromIntent` | 打开`RN`页面的时候传入参数 | 
-`openLink` | 从`RN`页面跳转至安卓页面 | 
 
 
 ## 页面结构
