@@ -11,8 +11,9 @@
 
 ## `ReactNative`与`Android`通信
 主要通过`BridgeModule`,更新中...
+
 方法名 | 说明 |    
--|-
+|------|---|  
 `closeWindow` | 关闭当前页面 |
 `getDataFromIntent` | 打开`RN`页面的时候传入参数 | 
 `openLink` | 从`RN`页面跳转至安卓页面 | 
@@ -43,18 +44,21 @@
 ### 影城详情页面
 
 <img src="https://github.com/Amandesu/maizuo/raw/master/assets/cinema_detail_rn.jpg"  width="300" height="620"/>
+
 ### 某个电影的影城列表页面
 
 <img src="https://github.com/Amandesu/maizuo/raw/master/assets/cinemas.jpg"  width="300" height="620"/>
+
 ### 登录页面
 
 <img src="https://github.com/Amandesu/maizuo/raw/master/assets/login.jpg"  width="300" height="620"/>
+
 ## `git`和下载地址
 为了便于管理`ReactNative`的项目我抽离出来了
 
-[sdk下载地址]("https://github.com/Amandesu/maizuo/blob/master/app/release/app-release.apk")项目地址
-[android]("https://github.com/Amandesu/maizuo")项目地址
-[ReactNative]("https://github.com/Amandesu/maizuoRN")项目地址.
+[sdk下载地址](https://github.com/Amandesu/maizuo/blob/master/app/release/app-release.apk)项目地址
+[android](https://github.com/Amandesu/maizuo)项目地址
+[ReactNative](https://github.com/Amandesu/maizuoRN)项目地址.
 
 如果大家有所帮助，可以给个[star]("https://github.com/Amandesu/maizuoRN"). 作者将更有动力更新和优化这个项目,不胜感激!
 
